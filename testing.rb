@@ -10,3 +10,8 @@ peli.origen = "Paraguay, 2012"
 peli.duracion = 105
 peli.codigo = 23
 peli.save
+
+socio = Socio.create(nombre: "Esteban", apellido: "Fornal", nro_socio: 354654)
+
+socio.peliculas << peli
+socio.save

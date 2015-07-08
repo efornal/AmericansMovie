@@ -1,10 +1,13 @@
 require 'dm-core'
 require 'dm-migrations'
 
+# If you want the logs displayed you have to do this before the call to setup
+DataMapper::Logger.new($stdout, :debug)
+
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
 
 class Socio
- include DataMapper::Resource
+ include DataMapper::Resource #as mixin
 
  property :id, Serial
  property :nombre, String
@@ -18,7 +21,7 @@ class Socio
 end
 
 class Pelicula
- include DataMapper::Resource
+ include DataMapper::Resource #as mixin
 
  property :id, Serial
  property :titulo, String
@@ -32,7 +35,7 @@ class Pelicula
 end
 
 class Prestamo
- include DataMapper::Resource
+ include DataMapper::Resource #as mixin
 
  belongs_to :socio,   :key => true
  belongs_to :pelicula, :key => true
