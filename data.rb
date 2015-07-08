@@ -49,6 +49,9 @@ end
 class Genero
   include DataMapper::Resource #as mixin
 
+  property :id, Serial
+  property :nombre, String
+
   has n, :peliculas
 end
 
