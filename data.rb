@@ -1,8 +1,10 @@
 require 'dm-core'
 require 'dm-migrations'
+require 'dm-timestamps' #provides automatic updates of created_at or created_on and updated_at or updated_on properties for your resources.
 
-# If you want the logs displayed you have to do this before the call to setup
-DataMapper::Logger.new($stdout, :debug)
+
+
+DataMapper::Logger.new($stdout, :debug) # If you want the logs displayed; verbose mode.
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
 
@@ -36,6 +38,8 @@ end
 
 class Prestamo
  include DataMapper::Resource #as mixin
+
+ property :updated_at, DateTime
 
  belongs_to :socio,   :key => true
  belongs_to :pelicula, :key => true
