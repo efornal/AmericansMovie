@@ -33,6 +33,7 @@ class Pelicula
  property :codigo, Integer
 
  has n, :prestamos
+ has n, :generos
  has n, :socios, :through => :prestamos
 end
 
@@ -43,6 +44,12 @@ class Prestamo
 
  belongs_to :socio,   :key => true
  belongs_to :pelicula, :key => true
+end
+
+class Genero
+  include DataMapper::Resource #as mixin
+
+  has n, :peliculas
 end
 
 DataMapper.finalize
