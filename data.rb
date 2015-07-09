@@ -18,7 +18,7 @@ class Socio
 
 
  has n, :prestamos
- has n, :peliculas, :through => :prestamos
+ has n, :peliculas, :through => :prestamos #and :puntajes
 
 end
 
@@ -34,7 +34,8 @@ class Pelicula
 
  has n, :prestamos
  has n, :generos
- has n, :socios, :through => :prestamos
+ has n, :socios, :through => :prestamos #and :puntajes #generates PeliculaSocio table: "peliculas_socios"
+
 end
 
 class Prestamo
@@ -53,6 +54,16 @@ class Genero
   property :nombre, String
 
   has n, :peliculas
+end
+
+class Puntaje
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :updated_at, DateTime
+
+  belongs_to :socio,   :key => true
+  belongs_to :pelicula, :key => true
 end
 
 DataMapper.finalize
