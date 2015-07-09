@@ -36,7 +36,7 @@ class Pelicula
  has n, :prestamos
  has n, :puntajes
 
- has n, :generos, :through => Resource #Creating join tables to link to group and person information
+ has n, :generos, :through => Resource #Creating join tables to link to pelicula and genero information
  has n, :socios, :through => :prestamos
 
 end
@@ -56,7 +56,7 @@ class Genero
   property :id, Serial
   property :nombre, String, required: true
 
-  has n, :peliculas, :through => Resource
+  has n, :peliculas, :through => Resource #Creating join tables to link to pelicuala and genero information
 end
 
 class Puntaje
