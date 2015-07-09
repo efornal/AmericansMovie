@@ -14,10 +14,11 @@ class Socio
  property :id, Serial
  property :nombre, String
  property :apellido, String
- property :nro_socio, Integer
+ property :nro_socio, Integer, required: true
 
 
  has n, :prestamos
+ has n, :puntajes #?
  has n, :peliculas, :through => :prestamos #and :puntajes
 
 end
@@ -26,15 +27,16 @@ class Pelicula
  include DataMapper::Resource #as mixin
 
  property :id, Serial
- property :titulo, String
+ property :titulo, String, required: true
  property :director, String
  property :origen, String
  property :duracion, Integer
- property :codigo, Integer
+ property :codigo, Integer, required: true
 
  has n, :prestamos
- has n, :generos
- has n, :socios, :through => :prestamos #and :puntajes #generates PeliculaSocio table: "peliculas_socios"
+ #has n, :generos
+ has n, :puntajes #?
+ has n, :socios, :through => :prestamos
 
 end
 
@@ -51,15 +53,16 @@ class Genero
   include DataMapper::Resource #as mixin
 
   property :id, Serial
-  property :nombre, String
+  property :nombre, String, required: true
 
-  has n, :peliculas
+  #has n, :peliculas
 end
 
 class Puntaje
   include DataMapper::Resource
 
   property :id, Serial
+  property :nro_puntaje, Integer, required: true
   property :updated_at, DateTime
 
   belongs_to :socio,   :key => true
