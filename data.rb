@@ -18,8 +18,8 @@ class Socio
 
 
  has n, :prestamos
- has n, :puntajes #?
- has n, :peliculas, :through => :prestamos #and :puntajes
+ has n, :puntajes
+ has n, :peliculas, :through => :prestamos
 
 end
 
@@ -34,8 +34,9 @@ class Pelicula
  property :codigo, Integer, required: true
 
  has n, :prestamos
- #has n, :generos
- has n, :puntajes #?
+ has n, :puntajes
+
+ has n, :generos, :through => Resource #Creating join tables to link to group and person information
  has n, :socios, :through => :prestamos
 
 end
@@ -55,7 +56,7 @@ class Genero
   property :id, Serial
   property :nombre, String, required: true
 
-  #has n, :peliculas
+  has n, :peliculas, :through => Resource
 end
 
 class Puntaje
