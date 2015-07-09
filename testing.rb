@@ -4,26 +4,19 @@ DataMapper.auto_migrate!
 #Pelicula.auto_migrate!
 #Prestamo.auto_migrate!
 
-peli = Pelicula.create()
-peli.titulo = "7 cajas"
-peli.director = "Maneglia, Juan Carlos & Schembori, Tana"
-peli.origen = "Paraguay, 2012"
-peli.duracion = 105
-peli.codigo = 23
-peli.save
-
+peli = Pelicula.create(titulo: "7 cajas", director: "Maneglia, Juan Carlos & Schembori, Tana", origen: "Paraguay, 2012", duracion: 105, codigo: 23)
 socio = Socio.create(nombre: "Esteban", apellido: "Fornal", nro_socio: 354654)
 
 socio.peliculas << peli
 socio.save
 
 # last added on puntaje testing
-socio.puntajes << Puntaje.create(nro_puntaje: 10, pelicula_id: peli.id)
+peli.puntajes << Puntaje.create(nro_puntaje: 10, socio_id: socio.id) #because it's a movie driven software.
 
 socio.save
 peli.save
 
-
+# puts socio.puntajes.first.nro_puntaje #>> 10
 # sqlite3 development.db
 # --------------------------
 # sqlite> select * from puntajes;
