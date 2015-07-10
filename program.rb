@@ -87,10 +87,5 @@ class Program
     ((pelicula.puntajes.collect{|e| e.nro_puntaje}.inject{|s, i| s + i}).to_f / pelicula.puntajes.size.to_f) if Pelicula.include?(pelicula)
   end
 
-  def mostrar_str_peliculas
-    Pelicula.collect {|p| {:titulo => p.titulo, :duracion => p.duracion, :director => p.director, :origen => p.origen, :ptj_prom => mostrar_ptj_promedio(p) }}
-  end
-
-
 
 end
