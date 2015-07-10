@@ -31,6 +31,7 @@ class Pelicula
  property :director, String
  property :origen, String
  property :duracion, Integer
+ property :stock, Integer
  property :codigo, Integer, required: true
 
  has n, :prestamos
@@ -44,6 +45,7 @@ end
 class Prestamo
  include DataMapper::Resource #as mixin
 
+ property :devolucion, DateTime
  property :created_at, DateTime
 
  belongs_to :socio,   :key => true

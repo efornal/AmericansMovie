@@ -4,6 +4,8 @@ DataMapper.auto_migrate!
 #Pelicula.auto_migrate!
 #Prestamo.auto_migrate!
 
+#faltaría testear eliminar asociaciones como: genero - pelicula.
+
 peli1 = Pelicula.create(titulo: "7 cajas", director: "Maneglia, Juan Carlos & Schembori, Tana", origen: "Paraguay, 2012", duracion: 105, codigo: 23)
 peli2 = Pelicula.create(titulo: "Matrix", director: "Andy Wachowski & Lana Wachowski", origen: "Estados Unidos, 1999", duracion: 136, codigo: 549)
 socio1 = Socio.create(nombre: "Esteban", apellido: "Fornal", nro_socio: 354654)
@@ -13,8 +15,13 @@ socio1.peliculas << peli1 #chaco alquilo 7 cajas
 socio2.peliculas << peli2 #yo alquilo matrix
 socio1.save
 
+#modificando valores
+socio2.nombre = "Jose"
+socio2.save
+
 # last added on puntaje testing
 peli1.puntajes << Puntaje.create(nro_puntaje: 8, socio_id: socio1.id) #because it's a movie driven software.
+peli1.puntajes << Puntaje.create(nro_puntaje: 7, socio_id: socio2.id)
 peli2.puntajes << Puntaje.create(nro_puntaje: 9, socio_id: socio2.id)
 
 drama = Genero.create(nombre: "Drama")
