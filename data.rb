@@ -12,8 +12,8 @@ class Socio
  include DataMapper::Resource #as mixin
 
  property :id, Serial
- property :nombre, String
- property :apellido, String
+ property :nombre, String, required: true
+ property :apellido, String, required: true
  property :nro_socio, Integer, required: true
 
 
@@ -44,7 +44,7 @@ end
 class Prestamo
  include DataMapper::Resource #as mixin
 
- property :updated_at, DateTime
+ property :created_at, DateTime
 
  belongs_to :socio,   :key => true
  belongs_to :pelicula, :key => true
@@ -64,7 +64,7 @@ class Puntaje
 
   property :id, Serial
   property :nro_puntaje, Integer, required: true
-  property :updated_at, DateTime
+  property :created_at, DateTime
 
   belongs_to :socio,   :key => true
   belongs_to :pelicula, :key => true
