@@ -13,6 +13,7 @@ socio2 = Socio.create(nombre: "Ramiro", apellido: "Flappo", nro_socio: 54654)
 
 socio1.peliculas << peli1 #chaco alquilo 7 cajas
 socio2.peliculas << peli2 #yo alquilo matrix
+socio2.peliculas << peli1 #tambien alquilo 7 cajas
 socio1.save
 
 #modificando valores
@@ -69,3 +70,7 @@ peli2.save
 # sqlite> select * from puntajes;
 # 1|8|2015-07-09T19:01:46-03:00|1|1
 # 2|9|2015-07-09T19:01:47-03:00|2|2
+
+
+
+# Zoo.first(:name => 'Metro')    # first matching record with the name 'Metro'

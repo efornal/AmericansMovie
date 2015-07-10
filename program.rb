@@ -58,7 +58,9 @@ class Program
 
   def devolver_pelicula(socio, pelicula)
     #alguna forma de encontrar las peliculas no devueltas que poseen los socios.
+    #  (socio1.prestamos.select{|p| p.devolucion == nil}).collect{|p| Pelicula.get(p.pelicula_id)} # Obtiene las peliculas no devueltas por socio1
     #encontrar el prestamo asociado a la pelicula que el socio quiere devolver (pelicula no devuelta.)
+    # Socio.all.collect {|socio| (socio.prestamos.select{|p| p.devolucion == nil}).collect{|p| Pelicula.get(p.pelicula_id).titulo}} #Obtiene el nombre de las peliculas que no han sido devueltas, teniendo en cuenta a todos los usuarios.
   end
 
   def puntuar_pelicula(socio, pelicula, puntuacion)
