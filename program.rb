@@ -1,6 +1,6 @@
 require_relative 'data.rb'
 # this is just for requirement gathering
-class Program
+module Program
 
 
 # Carga de datos.
@@ -52,15 +52,17 @@ class Program
     if Socio.include? socio
       dbpelicula.each {|p| socio.peliculas << p} if dbpelicula.class.to_s == "DataMapper::Collection"
       socio << dbpelicula if dbpelicula.class == Pelicula
+      #faltaria hacer los descuentos de stock pertinentes
       socio.save
     end
   end
 
   def devolver_pelicula(socio, pelicula)
-    #alguna forma de encontrar las peliculas no devueltas que poseen los socios.
-    #  (socio1.prestamos.select{|p| p.devolucion == nil}).collect{|p| Pelicula.get(p.pelicula_id)} # Obtiene las peliculas no devueltas por socio1
-    #encontrar el prestamo asociado a la pelicula que el socio quiere devolver (pelicula no devuelta.)
-    # Socio.all.collect {|socio| (socio.prestamos.select{|p| p.devolucion == nil}).collect{|p| Pelicula.get(p.pelicula_id).titulo}} #Obtiene el nombre de las peliculas que no han sido devueltas, teniendo en cuenta a todos los usuarios.
+
+    aux = ((socio.prestamos.select{|p| p.devolucion == nil}).select{|p| p.pelicula_id == pelicula.id}).first
+    aux.devolucion = DateTime.now
+    aux.save #Esto asume que todo esta ok, que la pelicula esta prestada al socio y nadie se olvido de cargar el prestamo.
+
   end
 
   def puntuar_pelicula(socio, pelicula, puntuacion)
@@ -89,5 +91,8 @@ class Program
     ((pelicula.puntajes.collect{|e| e.nro_puntaje}.inject{|s, i| s + i}).to_f / pelicula.puntajes.size.to_f) if Pelicula.include?(pelicula)
   end
 
-
+  def mostrar_pelicula_popular_semana
+    #Pelicula.prestamos.select{|pr| }
+    #Need to compare between two DateTime data, to get time laps.
+  end
 end

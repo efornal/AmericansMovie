@@ -2,3 +2,8 @@ Preguntas:
 
 * ¿Existe algún periodo (tiempo) de prestamo? "Periodo de prestamos" = días en los que el socio puede disfrutar de la pelicula; dias a devolver;
 o puede tener la película por tiempo indetermindado.
+
+
+Ideas:
+
+* Peliculas mas populares (más elegidas por los usuarios); mas prestadas, de la semana, del mes, del año.
