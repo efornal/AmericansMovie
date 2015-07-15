@@ -1,12 +1,17 @@
-require 'dm-core'
-require 'dm-migrations'
-require 'dm-timestamps' #provides automatic updates of created_at or created_on and updated_at or updated_on properties for your resources.
+require 'rubygems'
+require 'bundler/setup'
+Bundler.require(:default)
+
+#Las gemas que siguen se instalan y agregan automaticamente utilizando bundler.
+#require 'dm-core'
+#require 'dm-migrations'
+#require 'dm-timestamps' #provides automatic updates of created_at or created_on and updated_at or updated_on properties for your resources.
 
 
 
 DataMapper::Logger.new($stdout, :debug) # If you want the logs displayed; verbose mode.
 
-DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
+DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db/development.db")
 
 class Socio
  include DataMapper::Resource #as mixin

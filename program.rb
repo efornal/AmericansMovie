@@ -1,4 +1,4 @@
-require_relative 'data.rb'
+require_relative 'db/data.rb'
 # this is just for requirement gathering
 module Program
 

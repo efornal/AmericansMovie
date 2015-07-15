@@ -1,4 +1,4 @@
-require_relative "data.rb"
+require_relative "../db/data.rb"
 DataMapper.auto_migrate!
 #Socio.auto_migrate!
 #Pelicula.auto_migrate!
